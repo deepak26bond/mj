@@ -5,10 +5,145 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+<title>Baku Website Template | Home :: w3layouts</title>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+				 <!-- Custom Theme files -->
+		
+   		 <!-- Custom Theme files -->
+   	
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<!----webfonts--->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700,800,400,600' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+		<!---//webfonts--->
 </head>
-<body>
+<body >
+	<!-- header -->
+			<div class="header">
+				<div class="container">
+				<!-- logo -->
+				<div class="logo">
+					<a href="/mjweller/home"><img src="/logo.png" title="mJweelers" width="70"height="50" /></a>
+				</div>
+				<!-- logo -->
+				<!-- cart-info -->
+				<div class="cart-info">
+					<ul>
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Help</a></li>
+						<li><a href="#">Stores</a></li>
+						<li class="cartinfo"><a href="#"><span> </span>My bag (0) items</a></li>
+						<div class="clearfix"> </div>
+					</ul>
+				</div>
+				<!-- /cart-info -->
+			</div>
+			<!-- header -->
+		</div>
+		<!-- sub-header -->
+		<div class="sub-header">
+			<div class="container">
+				<!-- top-nav -->
+				<div class="top-nav">
+					<span class="menu"> </span>
+					<ul>
+						<li class="active"><a href="/mjweller/home">Home</a></li>
+						<li><a href="404.html">About</a></li>
+						<li><a href="/mjweller/home">What's new</a></li>
+						<li><a href="/mjweller/collection">Collections</a></li>
+						<li><a href="404.html">menu1</a></li>
+						<li><a href="404.html">menu2</a></li>
+						<li><a href="/mjweller/contact">Contact</a></li>
+						<div class="clearfix"> </div>
+					</ul>
+				</div>
+				<!-- top-nav -->
+				<!-- script-for-nav -->
+				<script>
+					$(document).ready(function(){
+						$("span.menu").click(function(){
+							$(".top-nav ul").slideToggle(300);
+						});
+					});
+				</script>
+				<!-- script-for-nav -->
+				<!-- search-form -->
+				<div class="search-form">
+					<form>
+						<input type="text" class="text" value="Keyword or product code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Keyword or product code';}">
+						<input type="submit" value="" />
+					</form>
+				</div>
+				<div class="clearfix"> </div>
+				<!-- /search-form -->
+			</div>
+		</div>
+		<!-- /sub-header -->
 
+	
+</header>
 <%= yield %>
+<footer>
+	 <div class="footer">
+			<div class="footer-grids">
+				<div class="container">
+					<div class="col-md-3 footer-grid">
+						<h4>Services</h4>
+						<ul>
+							<li><a href="#">Contact Customer Service</a></li>
+							<li><a href="#">Free Delivery over $150</a></li>
+							<li><a href="#">View your Wishlist</a></li>
+							<li><a href="#">Ring Size Guide</a></li>
+							<li><a href="#">Returns</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 footer-grid">
+						<h4>Information (FAQ)</h4>
+						<ul>
+							<li><a href="#">Gift certificates</a></li>
+							<li><a href="#">Jewellery care guide</a></li>
+							<li><a href="#">International customers</a></li>
+							<li><a href="#">Wholesale enquires</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 footer-grid">
+						<h4>More details</h4>
+						<ul>
+							<li><a href="#">About us</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms & COndition</a></li>
+							<li><a href="#">Secure payment</a></li>
+							<li><a href="#">Site map</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 footer-grid contact-grid">
+						<h4>Contact us</h4>
+						<ul>
+							<li><span class="c-icon"> </span>name</li>
+							<li><span class="c-icon1"> </span><a href="#">email</a></li>
+							<li><span class="c-icon2"> </span></li>
+						</ul>
+						<ul class="social-icons">
+							<li><a href="#"><span class="facebook"> </span></a></li>
+							<li><a href="#"><span class="twitter"> </span></a></li>
+							<li><a href="#"><span class="thumb"> </span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- news-letter -->
+			
+			<!-- news-letter -->
+		</div>
+		<!-- footer -->
+		<!-- copy-right -->
+		
+	
+</footer>
 
 </body>
+
+
 </html>
