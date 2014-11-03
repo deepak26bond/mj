@@ -31,7 +31,12 @@
 				<!-- cart-info -->
 				<div class="cart-info">
 					<ul>
-						<li><a href="#">Login</a></li>
+						<%if session[:admin]%>
+						<li><a href="/users/logout">logout</a></li>
+						<%else%>
+						<li><a href="/users/admin_login">admin Login</a></li>
+					
+						<%end%>
 						<li><a href="#">Help</a></li>
 						<li><a href="#">Stores</a></li>
 						<li class="cartinfo"><a href="#"><span> </span>My bag (0) items</a></li>

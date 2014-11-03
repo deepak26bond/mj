@@ -1,0 +1,30 @@
+<%if @total%>
+<table class="table">
+<tr> <th>image</th>
+	 <th>Name</th>
+	 <th>Description</th>
+	 <th>weight</th>
+	 <th>category</th>
+	 <th>subcategory</th>
+	 <th>quantity</th>
+    <th>Update</th>
+    <th>Delete</th>
+</tr>
+<%@total.each do |total|%>
+<tr>
+	<td><img src="<%=total.image_url(:thumb)%>" width='75'  height='75'/></td>
+	<td><%=total.name%></td>
+	<td><%=total.description%></td>
+	<td><%=total.weight%></td>
+	<td><%=total.category%></td>
+	<td><%=total.subcategory%></td>
+	<td><%=total.quantity%></td>
+	<td><a href="/mjweller/update?id=<%=total.id%>">update</a></td>
+	<td><a href="/mjweller/delete?id=<%=total.id%>">delete</a></td>
+	
+	
+</tr>
+
+<%end%>
+</table>
+<%end%>

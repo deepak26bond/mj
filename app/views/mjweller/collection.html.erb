@@ -45,11 +45,14 @@
 				<!-- iteam-grids -->
 				<div class="iteam-grids">
 					<div class="container">
+					<% if @item%>
+					<% @item.each do |item|%>
 						<div class="col-md-3">
 							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="/iteam1.jpg" title="name" />
+								<img src="<%=item.image_url(:thumb)%>"  title="name"  style="width: 150px;height: 150px" />
 								<span>Wing Earrings</span>
-								<label>PRICE AU$ 180.00</label>
+								<%price=PriceDetail.find_by_name(item.category).price %>
+								<label><%=price*item.weight%></label>
 								<ul>
 									<li><a class="cart" href="#">Add to cart</a></li>
 									<li><a class="more" href="#">More</a></li>
@@ -57,92 +60,10 @@
 								</ul>
 							</div>
 						</div>
-						<div class="col-md-3">
-							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="/iteam2.jpg" title="name" />
-								<span>Wing Earrings</span>
-								<label>PRICE AU$ 180.00</label>
-								<ul>
-									<li><a class="cart" href="#">Add to cart</a></li>
-									<li><a class="more" href="#">More</a></li>
-									<div class="clearfix"> </div>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="/iteam3.jpg" title="name" />
-								<span>Wing Earrings</span>
-								<label>PRICE AU$ 180.00</label>
-								<ul>
-									<li><a class="cart" href="#">Add to cart</a></li>
-									<li><a class="more" href="#">More</a></li>
-									<div class="clearfix"> </div>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="/iteam4.jpg" title="name" />
-								<span>Wing Earrings</span>
-								<label>PRICE AU$ 180.00</label>
-								<ul>
-									<li><a class="cart" href="#">Add to cart</a></li>
-									<li><a class="more" href="#">More</a></li>
-									<div class="clearfix"> </div>
-								</ul>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-						<div class="col-md-3">
-							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="/iteam5.jpg" title="name" />
-								<span>Wing Earrings</span>
-								<label>PRICE AU$ 180.00</label>
-								<ul>
-									<li><a class="cart" href="#">Add to cart</a></li>
-									<li><a class="more" href="#">More</a></li>
-									<div class="clearfix"> </div>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="/iteam6.jpg" title="name" />
-								<span>Wing Earrings</span>
-								<label>PRICE AU$ 180.00</label>
-								<ul>
-									<li><a class="cart" href="#">Add to cart</a></li>
-									<li><a class="more" href="#">More</a></li>
-									<div class="clearfix"> </div>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="/iteam7.jpg" title="name" />
-								<span>Wing Earrings</span>
-								<label>PRICE AU$ 180.00</label>
-								<ul>
-									<li><a class="cart" href="#">Add to cart</a></li>
-									<li><a class="more" href="#">More</a></li>
-									<div class="clearfix"> </div>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="/iteam8.jpg" title="name" />
-								<span>Wing Earrings</span>
-								<label>PRICE AU$ 180.00</label>
-								<ul>
-									<li><a class="cart" href="#">Add to cart</a></li>
-									<li><a class="more" href="#">More</a></li>
-									<div class="clearfix"> </div>
-								</ul>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
+				
+					
+					<%end%>					<div class="clearfix"> </div>
+					<%end%>
 					</div>
 				</div>
 				</div>

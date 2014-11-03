@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
+  get 'users/admin_login'
+ get "users/logout"
+ post "users/admin_auth"
+ 
  get "mjweller/about"
  get "mjweller/home"
   get "mjweller/collection"
   get "mjweller/contact"
   get "mjweller/detail"
+  get "mjweller/item_detail"
+  post "mjweller/add_detail"
+  get "mjweller/price"
+  get "mjweller/price_all"
+  post "mjweller/add_price"
+  get "mjweller/total_collection"
+  get "mjweller/update"
+   post "mjweller/add_update"
+  get "mjweller/delete"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
