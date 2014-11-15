@@ -1,0 +1,160 @@
+<script>
+	$(document).ready(function() {
+
+		v = $('#range').val();
+		$("#test").text(v);
+		$('#range').change(function() {
+			v = $(this).val();
+
+			$("#test").text(v);
+		});
+
+		$(".cc").change(function() {
+			if ($(this).prop("checked")) {
+				var url = filterOnCat('filterByCat');
+				$('#filterByCat').attr('action', '/mjweller/collection_new?id=' + url + '&type=price_detail_id');
+
+				$('#filterByCat').trigger('submit.rails');
+				$("#collection").html("<span class='fa fa-spinner spin'>loading..</span>")
+			} else {
+
+			}
+		});
+		$(".sub_check").change(function() {
+			if ($(this).prop("checked")) {
+				var url = filterOnCat('filterBySubcat');
+				$('#filterBySubcat').attr('action', '/mjweller/collection_new?id=' + url + '&type=category_detail_id');
+
+				$('#filterBySubcat').trigger('submit.rails');
+				$("#collection").html("<span class='fa fa-spinner spin'>loading..</span>")
+			} else {
+
+			}
+		});
+	$("#ex2").slider({});	
+	});
+	function filterOnCat(formid) {
+
+		var filterQuery = "";
+		var form = document.getElementById(formid);
+		for (var i = 0; i < form.elements.length; i++) {
+			var e = form.elements[i];
+			if (e != null && e.checked) {
+				filterQuery += e.value + ",";
+			}
+
+		}
+		if (filterQuery != "") {
+			filterQuery = filterQuery.substring(0, filterQuery.length - 1);
+
+		};
+
+		return filterQuery
+	}
+</script>
+
+<div class="container">
+	<div class="row ">
+		<div class="col-md-2 margin">
+			<div class="panel panel-default margin ">
+				<div class="panel-heading">
+					<span id="head_link"></span>
+				</div>
+				<div class="panel-body">
+
+					<div class="row " >
+
+						Category</br>
+						<form method="get"  id="filterByCat" action="/mjweller/collection_new" data-remote="true" >
+							<%cat_data.each do |cat|%>
+
+							<div class="form-group">
+								<div class=" col-sm-10">
+									<div class="checkbox" style="margin-bottom: 2px;margin-top: 2px">
+										<label>
+											<input type="checkbox" value="<%= cat.id%>"id="<%= cat.id%>"  class="cc" >
+											<%= "  "+  cat.name%> </label>
+									</div>
+								</div>
+							</div>
+							<%end%>
+						</form>
+					</div>
+					<hr />
+					<div class="row">
+
+						SubCategory</br>
+						<form method="get" role='form' id="filterBySubcat" action="/mjweller/collection_new" data-remote="true" >
+							<%sub_data.each do |subcat|%>
+
+							<div class="form-group">
+								<div class=" col-sm-10">
+									<div class="checkbox" style="margin-bottom: 2px;margin-top: 2px">
+										<label>
+											<input type="checkbox" value="<%= subcat.id%>"id="<%= subcat.id%>"  class="sub_check" >
+											<%= "  "+  subcat.category%> </label>
+									</div>
+								</div>
+							</div>
+							<%end%>
+						</form>
+					</div>
+					
+						<div class="row">
+							<form method="get" action="/mjweller/search_weight"  data-remote="true">
+								<div class="form-group">
+									<div class=" col-sm-10">
+
+										<input id="ex2" type="text" class="form-control" name="[weight]"  value="1,80" data-slider-min="1" data-slider-max="1000" data-slider-step=".5" data-slider-value="[1,80]" />
+
+									</div>
+								</div>
+                               <div class="form-group">
+									<div class=" col-sm-3" style="margin-top: 5px">
+                                          <input type="submit" class="btn btn-default btn-sm" />
+										</div>
+								</div>
+                               
+                               
+							</form>
+						</div>
+					
+				
+</div>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title" style="height: 30px">
+						<nav class="navbar  margin " role="navigation " style="z-index: 1;height: 30px" >
+
+							<ul class="nav navbar-nav">
+								<%= sortable "weight"%><span class="caret"></span>
+								<%= sortable "price_detail_id","Category"%><span class="caret"></span>
+								<%= sortable "category_detail_id","Subcategory"%><span class="caret"></span>
+
+							</ul>
+							<ul class="nav navbar-nav navbar-right" style="height: 30px">
+								<li>
+									<span  id="pagi"><%= will_paginate @item  %></span>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="panel-body"  id="collection">
+					
+					<%= render 'collection'%>
+				<script>
+				$(function() {
+					$('.pagination a').attr('data-remote', 'true')
+				});
+			</script>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>

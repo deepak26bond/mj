@@ -1,0 +1,25 @@
+<div class="row">
+	<% if @item%>
+	<% @item.each do |item|%>
+	<div class="col-md-3">
+		<div  class="iteam-grid text-center">
+			<a href="/mjweller/detail?id=<%=item.id%>"><img src="<%= item.image_url(:thumb)%>"  class="animated" title="name"  style="width: 150px;height: 150px" /></a>
+			<span><%=item.category_detail.category%> <%=item.price_detail.name%> </span>
+
+			<label>price:<%=item.price_detail.price*item.weight%></label>
+			<ul>
+				<li>
+					<a class="cart" href="#"><i>wt:<%=item.weight%> in gm</i></a>
+				</li>
+				<li>
+					<a class="more" href="#">More</a>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+		</div>
+	</div>
+
+	<%end%> <div class="clearfix"></div>
+	<%end%>
+</div>
+

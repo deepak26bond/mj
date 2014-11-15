@@ -1,71 +1,93 @@
-	<div class="collections">
-				<div class="collections-head">
-					<div class="container">
-						<div class="collections-head-left">
-							<img src="/iteam.png" title="name" />
-						</div>
-						<div class="collections-head-right">
-							<h2><span>Arizume</span></br><span>Mexican Silver</span></h2>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<!-- categories -->
-				<div class="categories">
-					<div class="container">
-						<div class="categories-left">
-							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Collections</a></li>
-								<li><a href="#">Arizume  Mexican Silver</a></li>
-							</ul>
-						</div>
-						<div class="categories-right">
-							<ul>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li class="view"><a href="#">View All</a></li>
-								<li class="options">
-									<select>
-										<option>Sorted by</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-									</select>
-								</li>
-								<div class="clearfix"> </div>
-							</ul>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<!-- categories -->
-				<!-- iteam-grids -->
-				<div class="iteam-grids">
-					<div class="container">
-					<% if @item%>
-					<% @item.each do |item|%>
-						<div class="col-md-3">
-							<div onclick="location.href='details.html';" class="iteam-grid text-center">
-								<img src="<%=item.image_url(:thumb)%>"  title="name"  style="width: 150px;height: 150px" />
-								<span>Wing Earrings</span>
-								<%price=PriceDetail.find_by_name(item.category).price %>
-								<label><%=price*item.weight%></label>
-								<ul>
-									<li><a class="cart" href="#">Add to cart</a></li>
-									<li><a class="more" href="#">More</a></li>
-									<div class="clearfix"> </div>
-								</ul>
-							</div>
-						</div>
+
+	
+	<style>
+		.pagination {
+			margin: 0px;
+			padding: 5px;
+			float: right;
+		margin-right: 10px;
+		}
+
+	</style>
+	<script>
+		$(document).ready(function() {
+		$('#popoverData').popover();
+$('#popoverOption').popover({ trigger: "hover" });
+		$("body").tooltip({ selector: '[data-toggle=tooltip]' });
+			v = $('#range').val();
+			$("#test").val(v);
+			$('#range').change(function() {
+				v = $(this).val();
 				
-					
-					<%end%>					<div class="clearfix"> </div>
-					<%end%>
-					</div>
-				</div>
-				</div>
-				<!-- iteam-grids -->
+				$("#test").val(v);
+			});
+    
 		
+		});
+
+	</script>
+	<div class="container"> <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><%= sortable "category_detail_id","category" %></li>
+                    <li><%= sortable "weight"%></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle">category <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                           <%@category.each do |cat| %>
+    <li><a href="/mjweller/search_id?id=<%=cat.id%>&type=price_detail_id" data-remote="true"><%=cat.name%></a></li>
+     <%end%> 
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" >Subcategory <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <%@subcategory.each do |subcat| %>
+    <li><a href="/mjweller/search_id?id=<%=subcat.id%>&type=category_detail_id" data-remote="true"><%=subcat.category%></a></li>
+     <%end%>
+                        </ul>
+                    </li>
+               <li > <span>weight range:</span><span >
+								<form method="get" action="/mjweller/search"  data-remote="true">
+									<input id="range" type="range" step=".1" max="1000" min=".1" data-toggle="tooltip" title="title" />
+									<input type="text" id="test" name="searchdata[weight]"/>
+									<input type="submit" />
+							</form> </span> </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                    <span  id="pagi"><%= will_paginate @item  %></span>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav></div>
+	<div class="container"  >
+		
+		<div class="iteam-grids" id="collection">
+
+			<%= render "collection" %>
+
+			<script>
+				$(function() {
+					$('.pagination a').attr('data-remote', 'true')
+				});
+			</script>
+		</div>
+	
+	</div>
+	
+	
+	<!-- iteam-grids -->

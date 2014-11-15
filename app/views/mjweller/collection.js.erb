@@ -1,0 +1,4 @@
+$('#collection').html("<%= escape_javascript(render("collection")) %>");
+$("#pagi").html("<%= escape_javascript(render("pagination")) %>");
+$('.pagination a').attr('data-remote', 'true');
+

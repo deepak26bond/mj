@@ -5,39 +5,91 @@
 						<span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span>
 					</div>		
 					<!----- contact-grids ----->		
-					<div class="contact-grids">
-						<div class="contact-map">
+					
+						<div class="contact-map col-md-8 col-md-offset-2" >
 							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1578265.0941403757!2d-98.9828708842255!3d39.41170802696131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1407515822047"> </iframe>
 						</div>
 						<!----- contact-form ------>
-						<div class="contact-form">
-							<form>
-								<div class="contact-form-row">
-									<div>
-										<span>Name :</span>
-										<input type="text" class="text" value="Your Name here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name here';}">
-									</div>
-									<div>
-										<span>Email :</span>
-										<input type="text" class="text" value="Your Email here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Email here';}">
-									</div>
-									<div>
-										<span>Subject :</span>
-										<input type="text" class="text" value="Your Subject here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Subject here';}">
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-								<div class="clearfix"> </div>
-								<div class="contact-form-row2">
-									<span>Message :</span>
-									<textarea> </textarea>
-								</div>
-								<input type="submit" value="send">
-							</form>
-						</div>
-						<!----- contact-form ------>
-					</div>
-					<!----- contact-grids ----->
+						<% provide(:title, 'contact') %>
+
+<div class="container ">
+     <div class="row">
+     	
+     	<div class="col-md-6 col-md-offset-3">
+         <form class="myfirstform" role="form" method="post" action="/mjweller/mail_send" >
+	<%if sussces%>
+	<div class="well">
+		
+     <ul><li><span class="text-success"><%=sussces%></span></li>
+        	
+        	
+        </ul>
+     	
+		
+	</div><%end%>
+		
+		<div class="form-group">
+	        <label class="control-label">Name</label>
+			<div class="controls">
+			    <div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input type="text" class="form-control" name="mail[name]" placeholder="Name" required="">
 				</div>
 			</div>
+		</div>
+		<div class="form-group">
+	        <label class="control-label">Mobile</label>
+			<div class="controls">
+			    <div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-mobile fa-1.5x"></i></span>
+					<input type="text" class="form-control" name="mail[mobile]" placeholder="Mobile" required="">
+				</div>
+			</div>
+		</div>
 		
+		<div class="form-group">
+	        <label class="control-label">Email</label>
+			<div class="controls">
+			    <div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+					<input type="email" class="form-control" id="email" name="mail[email]" placeholder="Email" required="">
+				</div>
+			</div>	
+		</div>
+		
+		<div class="form-group ">
+	        <label class="control-label">Subject</label>
+			<div class="controls">
+			    <div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+					<input type="text" class="form-control" id="subject" name="mail[subject]" placeholder="subject" required="">
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="form-group ">
+	        <label class="control-label">Message</label>
+			<div class="controls">
+			    <div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+					<textarea name="mail[message]" class="form-control " rows="4" cols="78" placeholder="Enter your message here" required=""></textarea>
+
+				</div>
+			</div>
+		</div>
+		
+		
+		
+	      <div class="controls" style="margin-left: 70%;">
+		  
+	       <button type="submit" id="mybtn"  class="btn btn-primary"  >Send Message</button>
+	        
+	      </div>
+		</form>
+		</div>
+		
+		</div></div>
+</div>
+</div>

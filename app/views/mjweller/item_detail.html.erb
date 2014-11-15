@@ -47,7 +47,7 @@
 							<div class="form-group">
 								<label for="first_name">Item Name</label>
 								<div class="input-group">
-									<input type="text" class="form-control" id="first_name" name="itemdata[name]" placeholder="Item  Name" value="<%= session[:ts_email]%>">
+									<input type="text" class="form-control" id="first_name" name="itemdata[name]" placeholder="Item  Name" required="">
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 							</div>
@@ -61,17 +61,19 @@
 							<div class="form-group">
 								<label for="mobile">Weight in gm</label>
 								<div class="input-group">
-									<input type="text" class="form-control" id="mobile" name="itemdata[weight]" placeholder=" Weight" required autocomplete="true">
+									<input type="number" class="form-control" id="weight" name="itemdata[weight]" placeholder=" Weight" min=".01" step=".01" required autocomplete="off">
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 							</div>
 							<div class="form-group">
+								
 								<label for="class">Category</label>
 								<div class="input-group">
-									<select name="itemdata[category]" id="class" class="form-control">
-										<option>gold</option>
-										<option>silver</option>
-										<option>diamond</option>
+								    
+									<select name="itemdata[price_detail_id]" id="class" class="form-control">
+										<%@price.each do |price|%>
+										<option value="<%=price.id%>"><%=price.name%></option>
+										 <%end%>
 
 									</select>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
@@ -80,13 +82,18 @@
 							<div class="form-group">
 								<label for="class">SubCategory</label>
 								<div class="input-group">
-									<input type="text" class="form-control" id="mobile" name="itemdata[subcategory]" placeholder=" Sub category" required autocomplete="true">
+									<select name="itemdata[category_detail_id]" id="class" class="form-control">
+										<%@subcategory.each do |category|%>
+										<option value="<%=category.id%>"><%=category.category%></option>
+										 <%end%>
+
+									</select>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 								<div class="form-group">
 									<label for="first_name">Quantity</label>
 									<div class="input-group">
-										<input type="text" class="form-control" id="first_name" name="itemdata[quantity]" placeholder="Quantity" value="">
+										<input type="number" class="form-control" id="quantity" name="itemdata[quantity]" placeholder="Quantity" min="1" value="" required="">
 										<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 									</div>
 								</div>
@@ -94,7 +101,7 @@
 								<div class="form-group">
 									<label for="first_name">image</label>
 									<div class="input-group">
-										<input type="file" class="form-control" id="first_name" name="itemdata[image]" placeholder="Quantity" value="">
+										<input type="file" class="form-control" id="image" name="itemdata[image]"  required="">
 										<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 									</div>
 								</div>

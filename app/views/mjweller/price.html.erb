@@ -5,7 +5,7 @@
 			<div class="panel panel-default">
 
 				<div class="panel-heading">
-					<%if error ||sussces%>
+					<%if error %>
 
 					<div class="error" >
 						<ul>
@@ -21,8 +21,23 @@
 					</div>
 
 					<%end%>
+					<%if sussces %>
+
+					<div  >
+						<ul>
+							
+							
+							<span style="color: green"><%= sussces%></span></li>
+
+						</ul>
+
+					</div>
+
+					<%end%>
+
+					
 					<div class="panel-title">
-						Add item
+						Add New Category
 					</div>
 
 				</div>
@@ -35,19 +50,15 @@
 							<div class="form-group">
 								<label for="class">Name</label>
 								<div class="input-group">
-									<select name="pricedata[name]" id="class" class="form-control">
-										<option>gold</option>
-										<option>silver</option>
-										<option>diamond</option>
-
-									</select>
+									<input type="text" name="pricedata[name]" id="class" placeholder="Item name" class="form-control" required="">
+										
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="class">price</label>
+								<label for="class">price per gram</label>
 								<div class="input-group">
-									<input type="text" class="form-control" id="mobile" name="pricedata[price]" placeholder=" Sub category" required autocomplete="true">
+									<input type="number" class="form-control" id="mobile" name="pricedata[price]" placeholder=" Enter price" step=".01" min=".1" required autocomplete="off">
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 

@@ -1,30 +1,24 @@
 <%if @total%>
-<table class="table">
-<tr> <th>image</th>
-	 <th>Name</th>
-	 <th>Description</th>
-	 <th>weight</th>
-	 <th>category</th>
-	 <th>subcategory</th>
-	 <th>quantity</th>
-    <th>Update</th>
-    <th>Delete</th>
-</tr>
-<%@total.each do |total|%>
-<tr>
-	<td><img src="<%=total.image_url(:thumb)%>" width='75'  height='75'/></td>
-	<td><%=total.name%></td>
-	<td><%=total.description%></td>
-	<td><%=total.weight%></td>
-	<td><%=total.category%></td>
-	<td><%=total.subcategory%></td>
-	<td><%=total.quantity%></td>
-	<td><a href="/mjweller/update?id=<%=total.id%>">update</a></td>
-	<td><a href="/mjweller/delete?id=<%=total.id%>">delete</a></td>
+<table class="table pretty">
+	<tr>
+		<th> <%if sussces %> <span style="color: green"><%= sussces%></span> <%end%> </th>
+	</tr>
+	<tr>
+		<th>image</th>
+		<th><%= sort_link(@q,:name,"Name") %></th>
+		<th><%= sort_link(@q,:description,"Description")%></th>
+		<th><%=sort_link(@q, :weight)%></th>
+		<th><%= sort_link(@q,:price_detail_id,"category")%></th>
+		<th><%= sort_link(@q,:category_detail_id,"Subcategory") %></th>
+		<th><%= sort_link(@q,:qantity)%></th>
+		<th>Update</th>
+		<th>Delete</th>
+	</tr>
+	<tbody id="tbody">
+		<%=render 'total_collection'%>
+		
+		
+	</tbody>
 	
-	
-</tr>
-
-<%end%>
-</table>
+	</table>
 <%end%>

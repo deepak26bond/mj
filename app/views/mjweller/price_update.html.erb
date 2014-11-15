@@ -1,0 +1,110 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+
+			<div class="panel panel-default">
+
+				<div class="panel-heading">
+					<%if error%>
+
+					<div class="error" >
+						<ul>
+							<% error.each do |message| %>
+							<li>
+								<%= message %>
+							</li>
+							<% end %>
+							<span style="color: green"><%= sussces%></span></li>
+
+						</ul>
+
+					</div>
+
+					<%end%>
+					<%if sussces %>
+
+					<div class="error" >
+						<ul>
+							
+							<span style="color: green"><%= sussces%></span></li>
+
+						</ul>
+
+					</div>
+
+					<%end%>
+
+					<div class="panel-title">
+						Add item
+					</div>
+
+				</div>
+
+				<div class="panel-body">
+
+					<div class="col-md-8">
+						<form action="/mjweller/price_update_db" method="post" role="form">
+
+							<div class="form-group">
+								<label for="class">Name</label>
+								<div class="input-group">
+								
+								<select name="pricedata[id]" id="class" class="form-control">
+										<%@update.each do |update|%>
+										
+										<option value="<%= update.id%>" title="<%= update.price%>" class="aa"><%= update.name%></option>
+										<%end%>
+
+									</select>
+                         <script>
+                         	$(document).ready(function(){
+                       $('#old').val($(this).find("option:selected").attr("title"));
+                         	
+                        $("#class").change(function(){
+                         	$('#old').val($(this).find("option:selected").attr("title"));
+                         	});
+                         	
+                         	});
+                         	
+                         </script>
+									
+									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="class">old price</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="old"  disabled="">
+									
+								</div>
+
+							</div>
+
+							
+							<div class="form-group">
+								<label for="class">New price</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="mobile" name="pricedata[price]" placeholder=" Enter new price" required>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+								</div>
+
+							</div>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input type="submit" value="add new price" class="btn btn-primary" data-confirm="confirm to change price"/>
+
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="panel-footer">
+					footer
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>

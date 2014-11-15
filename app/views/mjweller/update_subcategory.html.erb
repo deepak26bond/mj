@@ -1,0 +1,72 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+
+			<div class="panel panel-default">
+
+				<div class="panel-heading">
+					<%if error %>
+
+					<div class="error" >
+						<ul>
+							<% error.each do |message| %>
+							<li>
+								<%= message %>
+							</li>
+							<% end %>
+							
+
+						</ul>
+
+					</div>
+
+					<%end%>
+				    <%if   sussces%>
+					<span style="color: green"><%= sussces%></span></li>
+					<%end%>
+					<div class="panel-title">
+						Add Subcategory
+					</div>
+
+				</div>
+
+				<div class="panel-body">
+
+					<div class="col-md-8">
+						<form action="/mjweller/add_subcat_db" method="post" role="form">
+
+							<div class="form-group">
+								<label for="class">Name</label>
+								<div class="input-group">
+									<input type="text" name="subdata[category]" placeholder="Enter Name"  id="class" class="form-control" required="">
+										
+									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="class">Description</label>
+								<div class="input-group">
+									<textarea type="text" class="form-control" id="sub" name="subdata[description]" placeholder=" Description" required="" ></textarea>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+								</div>
+
+							</div>
+							<div class="form-group">
+
+								<div class="input-group">
+									<input type="submit" value="add Subcategory" class="btn btn-primary"/>
+
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="panel-footer">
+					footer
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>

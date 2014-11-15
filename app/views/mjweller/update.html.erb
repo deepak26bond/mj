@@ -69,17 +69,12 @@
 							<div class="form-group">
 							<script>
 							$(document).ready(function(){
-								<%if @update.category=='gold'%>
 								
-								$("#gold").attr("selected","selected");
-								<%end%>
-								<%if @update.category=='silver'%>
-							
-								$("#silver").attr("selected","selected");
-								<%end%>
-								<%if @update.category=='diamond'%>
+								<% @category.each do |category|%>
+								<%if @update.price_detail_id==category.id%>
 								
-								$("#diamond").attr("selected","selected");
+								$("#<%=category.id%>").attr("selected","selected");
+								<%end%>
 								<%end%>
 								});
 							</script>
@@ -87,21 +82,42 @@
 							
 								<label for="class">Category</label>
 								<div class="input-group">
-									<select name="itemdata[category]" id="class" class="form-control" >
-										<option id="gold">gold</option>
-										<option id="silver">silver</option>
-										<option id="diamond">diamond</option>
-
+									<select name="itemdata[price_detail_id]" id="class" class="form-control" >
+										<% @category.each do |category|%>
+										<option id="<%=category.id%>" value="<%=category.id%>"><%=category.name%></option>
+										
+                                        <%end%>
 									</select>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="class">SubCategory</label>
+							<script>
+							$(document).ready(function(){
+								
+								<% @subcategory.each do |subcategory|%>
+								<%if @update.category_detail_id==subcategory.id%>
+								
+								$("#<%=subcategory.id%>").attr("selected","selected");
+								<%end%>
+								<%end%>
+								});
+							</script>
+							
+							
+								<label for="class">Sub category</label>
 								<div class="input-group">
-									<input type="text" class="form-control" id="mobile" name="itemdata[subcategory]" value="<%=@update.subcategory%>" placeholder=" Sub category" required autocomplete="true">
+									<select name="itemdata[category_detail_id]" id="class" class="form-control" >
+										<% @subcategory.each do |subcategory|%>
+										<option id="<%=subcategory.id%>" value="<%=subcategory.id%>"><%=subcategory.category%></option>
+										
+                                        <%end%>
+									</select>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
+							</div>
+							
+							
 								<div class="form-group">
 									<label for="first_name">Quantity</label>
 									<div class="input-group">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103101107) do
+ActiveRecord::Schema.define(version: 20141104074928) do
 
   create_table "category_details", force: true do |t|
     t.string   "category"
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20141103101107) do
   create_table "item_details", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.float    "weight",            limit: 255
-    t.integer  "pricedetail_id"
-    t.integer  "categorydetail_id"
+    t.float    "weight",             limit: 255
+    t.integer  "price_detail_id"
+    t.integer  "category_detail_id"
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"

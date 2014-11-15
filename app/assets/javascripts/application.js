@@ -12,10 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
 //= require jquery.remotipart
-
+//require bootstrap-slider
 // Include all twitter's javascripts
 //= require twitter/bootstrap
  
@@ -24,12 +25,12 @@
 //= require twitter/bootstrap/alert
 //= require twitter/bootstrap/modal
 //= require twitter/bootstrap/dropdown
-// require twitter/bootstrap/scrollspy
-// require twitter/bootstrap/tab
-//require twitter/bootstrap/tooltip
-//require twitter/bootstrap/popover
+//= require twitter/bootstrap/scrollspy
+//= require twitter/bootstrap/tab
+//= require twitter/bootstrap/tooltip
+//= require twitter/bootstrap/popover
 //= require twitter/bootstrap/button
-// require twitter/bootstrap/collapse
+//= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/carousel
-// require twitter/bootstrap/affix
+//= require twitter/bootstrap/affix
 

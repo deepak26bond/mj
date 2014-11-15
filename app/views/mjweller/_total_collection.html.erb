@@ -1,0 +1,15 @@
+<%@total.each do |total|%>
+	<tr>
+		<td><img src="<%= total.image_url(:thumb)%>" width='75'  height='75'/></td>
+		<td><%= total.name%></td>
+		<td><%= total.description%></td>
+		<td><%= total.weight%></td>
+		<td><%= total.price_detail.name%></td>
+		<td><%= total.category_detail.category%></td>
+		<td><%= total.quantity%></td>
+		<td><a href="/mjweller/update?id=<%= total.id%>">update</a></td>
+		<td><a href="/mjweller/delete?id=<%= total.id%>">delete</a></td>
+
+	</tr>
+
+	<%end%>
