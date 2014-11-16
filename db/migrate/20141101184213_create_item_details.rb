@@ -3,11 +3,11 @@ class CreateItemDetails < ActiveRecord::Migration
     create_table :item_details do |t|
       t.string :name
       t.text :description
-      t.string :weight
-      t.integer :pricedetail_id
-      t.integer :categorydetail_id
+      t.float :weight
+      t.integer :price_detail_id
+      t.integer :category_detail_id
       t.integer :quantity
-
+      t.string :image 
       t.timestamps
     end
   end
