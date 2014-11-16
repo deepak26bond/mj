@@ -5,9 +5,7 @@
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
-		<title>Baku Website Template | Home :: w3layouts</title>
-
-		<script type="application/x-javascript">
+				<script type="application/x-javascript">
 			addEventListener("load", function() {
 				setTimeout(hideURLbar, 0);
 			}, false);
@@ -131,25 +129,7 @@
 									<a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" class="dropdown-toggle animated" >Items <b class="caret"></b></a>
 									<ul class="dropdown-menu">
 									
-										<%sub_data.each do |subcat| %>
-										<li class="dropdown-submenu  ">
-											<a tabindex="-1" class="animated" data-delay="1000" href="/mjweller/collection_new?id=<%= subcat.id%>&type=category_detail_id"><%= subcat.category%></a>
-											<ul class="dropdown-menu"  style="margin-top: 3px">
-												<li>
-													<div   class="container" style="max-width: 900px ;margin-top: 10px" >
-														<div class="row" >
-
-															<% @item=submenu('category_detail_id',subcat.id)%>
-															<%if @item.any?%>
-															<%= render '/mjweller/collection'%>
-															<div class="clearfix"></div>
-															<%else%>
-															<div class="col-md-4">
-																No item in stock:p
-															</div>
-
-															<%end%>
-
+									
 														</div>
 
 													</div>
