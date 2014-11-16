@@ -125,6 +125,18 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav nav-pills">
                                  <li><a href="/mjweller/home">Home</a></li>
+								<li class="dropdown">
+									<a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" class="dropdown-toggle animated" >Items <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+									
+										<%sub_data.each do |subcat| %>
+										<li class="dropdown-submenu  ">
+											<a tabindex="-1" class="animated" data-delay="1000" href="/mjweller/collection_new?id=<%= subcat.id%>&type=category_detail_id"><%= subcat.category%></a>
+																					</li>
+
+										<%end%>
+									</ul>
+								</li>
 								
 								<li>
 									<a href="/mjweller/collection_new">Collection</a>
