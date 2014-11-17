@@ -5,7 +5,7 @@
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
-				<script type="application/x-javascript">
+		<script type="application/x-javascript">
 			addEventListener("load", function() {
 				setTimeout(hideURLbar, 0);
 			}, false);
@@ -17,9 +17,12 @@
 			$(document).ready(function() {
 				$(".navbar-brand").addClass('animated wobble  ');
 				$('.animated').hover(function() {
-					$(this).toggleClass('pulse');
+					$(this).toggleClass('swing');
 				});
+$(".category_link").click(function(){
+	
 
+});
 			});
 		</script>
 
@@ -30,7 +33,7 @@
 
 		<style>
 			.slider .slider-horizontal {
-				width:180px;
+				width: 180px;
 			}
 			.pagination {
 				margin: 0px;
@@ -93,12 +96,19 @@
 			}
 			.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {
 				text-decoration: none;
-				color: #102CE8;
-				background-color: #120F12;
-				
+				color: #161616;
+				background-color: #FFFFFF;
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#fff', GradientType=0);
 			}
-			
+			.ab:hover{
+				color: #fff;
+-webkit-transition: 0.3s;
+-moz-transition: 0.3s;
+-o-transition: 0.3s;
+-transition: 0.3s;
+text-shadow: 2px 2px 10px #cc00ff;
+				
+			}
 		</style>
 	</head>
 	<body >
@@ -124,28 +134,63 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav nav-pills">
-                                 <li><a href="/mjweller/home">Home</a></li>
+								<li class="animated ab">
+									<a href="/mjweller/home">Home</a>
+								</li>
 								<li class="dropdown">
 									<a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" class="dropdown-toggle animated" >Items <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-									
+
 										<%sub_data.each do |subcat| %>
 										<li class="dropdown-submenu  ">
-											<a tabindex="-1" class="animated" data-delay="1000" href="/mjweller/collection_new?id=<%= subcat.id%>&type=category_detail_id"><%= subcat.category%></a>
-																					</li>
+											<a tabindex="-1" class="animated category_link" data-delay="1000" id="<%= subcat.id%>" href="/mjweller/collection_new?id=<%= subcat.id%>&type=category_detail_id"><%= subcat.category%></a>
+										</li>
 
 										<%end%>
 									</ul>
 								</li>
-								
-								<li>
-									<a href="/mjweller/collection_new">Collection</a>
-								<li><a href="/mjweller/about">About</a></li>
-								<li><a href="/mjweller/contact">Contact</a></li>
+
+								<li class="animated ab">
+									<a href="/mjweller/collection_new"  >Collection</a>
+								<li class="animated ab"> 
+									<a href="/mjweller/about">About</a>
 								</li>
+								<li class="animated ab">
+									<a href="/mjweller/contact">Contact</a>
+								</li >
+								</li class="animated ab">
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
+                            <%if session[:admin]%>
+							<li class="dropdown">
+									<a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" class="dropdown-toggle animated" >Admin <b class="caret"></b></a>
+									<ul class="dropdown-menu">
 
+										
+										<li >
+											<a  href="/mjweller/item_detail">Add Item</a>
+										</li>
+										<li >
+											<a  href="/mjweller/total_collection">ItemUpdate</a>
+										</li>
+										<li >
+											<a  href="/mjweller/price">Add Metal</a>
+										</li>
+										<li >
+											<a  href="/mjweller/price_update">Update price</a>
+										</li>
+										<li >
+											<a  href="/mjweller/add_subcategory">Add Category</a>
+										</li>
+
+										<li >
+											<a href="/users/logout">logout</a>
+										</li>
+									</ul>
+								</li>
+						<%else%>
+						<li><a href="/users/admin_login">login</a></li>
+							<%end%>
 							</ul>
 						</div><!-- /.navbar-collapse -->
 					</div>

@@ -13,7 +13,7 @@
 			<a href="/mjweller/detail?id=<%=item.id%>"><img src="<%= item.image_url(:thumb)%>"  class="animated" title="name"  style="width: 200px;height: 200px" /></a>
 			<span><%=item.category_detail.category%> <%=item.price_detail.name%> </span>
 
-			<label>price:<%=item.price_detail.price*item.weight%></label>
+			<label>price:<i class="fa fa-inr">&nbsp;</i><%=item.price_detail.price*item.weight%></label>
 			<ul>
 				<li>
 					<a class="cart" href="#"><i>wt:<%=item.weight%> in gm</i></a>
@@ -27,6 +27,11 @@
 	</div>
 
 	<%end%> <div class="clearfix"></div>
+	
 	<%end%>
+<% if @item.empty?%>
+no item
+<%end%>
+
 </div>
 

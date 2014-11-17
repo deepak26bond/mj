@@ -31,7 +31,7 @@
 
 			}
 		});
-	$("#ex2").slider({});	
+		$("#ex2").slider({});
 	});
 	function filterOnCat(formid) {
 
@@ -58,7 +58,8 @@
 		<div class="col-md-2 margin">
 			<div class="panel panel-default margin ">
 				<div class="panel-heading">
-					<span id="head_link"></span>
+					<span id="head_link"><a href="/mjweller/collection_new">items</a> <%if session[:cat_name]%>
+						/<a href="#"><%= session[:cat_name]%></a> <a href="/mjweller/collection_new" class="close">&times;</a> <%end%> </span>
 				</div>
 				<div class="panel-body">
 
@@ -82,45 +83,28 @@
 					</div>
 					<hr />
 					<div class="row">
-
-						SubCategory</br>
-						<form method="get" role='form' id="filterBySubcat" action="/mjweller/collection_new" data-remote="true" >
-							<%sub_data.each do |subcat|%>
-
+						<div class="col-md-12 text-info">
+							weight range:
+						</div>
+						<form method="get" action="/mjweller/search_weight"  data-remote="true">
 							<div class="form-group">
+
 								<div class=" col-sm-10">
-									<div class="checkbox" style="margin-bottom: 2px;margin-top: 2px">
-										<label>
-											<input type="checkbox" value="<%= subcat.id%>"id="<%= subcat.id%>"  class="sub_check" >
-											<%= "  "+  subcat.category%> </label>
-									</div>
+
+									<input id="ex2" type="text" class="form-control" name="[weight]"  value="1,80" data-slider-min="1" data-slider-max="1000" data-slider-step=".5" data-slider-value="[1,80]" />
+
 								</div>
 							</div>
-							<%end%>
+							<div class="form-group">
+								<div class=" col-sm-3" style="margin-top: 5px">
+									<input type="submit" class="btn btn-default btn-sm" />
+								</div>
+							</div>
+
 						</form>
 					</div>
-					
-						<div class="row">
-							<form method="get" action="/mjweller/search_weight"  data-remote="true">
-								<div class="form-group">
-									<div class=" col-sm-10">
 
-										<input id="ex2" type="text" class="form-control" name="[weight]"  value="1,80" data-slider-min="1" data-slider-max="1000" data-slider-step=".5" data-slider-value="[1,80]" />
-
-									</div>
-								</div>
-                               <div class="form-group">
-									<div class=" col-sm-3" style="margin-top: 5px">
-                                          <input type="submit" class="btn btn-default btn-sm" />
-										</div>
-								</div>
-                               
-                               
-							</form>
-						</div>
-					
-				
-</div>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-10">
@@ -130,27 +114,48 @@
 						<nav class="navbar  margin " role="navigation " style="z-index: 1;height: 30px" >
 
 							<ul class="nav navbar-nav">
-								<%= sortable "weight"%><span class="caret"></span>
-								<%= sortable "price_detail_id","Category"%><span class="caret"></span>
-								<%= sortable "category_detail_id","Subcategory"%><span class="caret"></span>
+								<%if session[:cat_name]%>
+								<%= session[:cat_name]%> items
+								<%else%>
+								Total Items
+								<%end%>
 
 							</ul>
 							<ul class="nav navbar-nav navbar-right" style="height: 30px">
 								<li>
 									<span  id="pagi"><%= will_paginate @item  %></span>
 								</li>
+								<li class="dropdown">
+									<a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" class="dropdown-toggle animated" >Short By: <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<%= sortable "weight"%>
+										</li>
+
+										<li>
+
+											<%= sortable "category_detail_id","Items"%>
+
+										</li>
+										<li>
+											<%= sortable "price_detail_id","Metal"%>
+										</li>
+
+									</ul>
+								</li>
+
 							</ul>
 						</nav>
 					</div>
 				</div>
 				<div class="panel-body"  id="collection">
-					
+
 					<%= render 'collection'%>
-				<script>
-				$(function() {
-					$('.pagination a').attr('data-remote', 'true')
-				});
-			</script>
+					<script>
+						$(function() {
+							$('.pagination a').attr('data-remote', 'true')
+						});
+					</script>
 				</div>
 
 			</div>

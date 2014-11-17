@@ -173,21 +173,44 @@ end
 end
 
 def collection_new
+
 if params['type'].nil?
-@item=ItemDetail.order(sort_column + " " + sort_direction).joins(:price_detail).paginate(:page => params[:page], :per_page =>8)
+  session[:category_id]=nil
+session[:cat_name]=nil
+@item=ItemDetail.order(sort_column + " " + sort_direction).joins(:price_detail).paginate(:page => params[:page], :per_page =>9)
 respond_to do |format|
      format.html{} 
     # format.json { render json: @item }
      format.js
   end
 else
- 
-  id=params['id'].split(',')
-  @item=ItemDetail.where(params['type']=> [id]).joins(:price_detail).paginate(:page => params[:page], :per_page =>12)
+  if params['type']=='category_detail_id'
+  session[:category_id]=params['id']
+  session[:cat_name]=CategoryDetail.find(session[:category_id]).category
+ @item=ItemDetail.where(params['type']=> [session[:category_id]]).joins(:price_detail).paginate(:page => params[:page], :per_page =>9)
 respond_to do |format|
 format.html{} 
    # format.json { render json: @item }
     format.js
+
+end
+elsif  params['type']=='price_detail_id'
+  id=params['id'].split(',')
+  @item=ItemDetail.where('category_detail_id == (?) AND price_detail_id IN (?) '  , session[:category_id],id).joins(:price_detail).paginate(:page => params[:page], :per_page =>9)
+respond_to do |format|
+format.html{} 
+   # format.json { render json: @item }
+    format.js
+end
+
+else
+   id=params['id'].split(',')
+  @item=ItemDetail.where(params['type']=> [id]).joins(:price_detail).paginate(:page => params[:page], :per_page =>9)
+respond_to do |format|
+format.html{} 
+   # format.json { render json: @item }
+    format.js
+end
 end
 end
 end
