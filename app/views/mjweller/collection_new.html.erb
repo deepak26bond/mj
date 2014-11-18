@@ -58,14 +58,22 @@
 		<div class="col-md-2 margin">
 			<div class="panel panel-default margin ">
 				<div class="panel-heading">
-					<span id="head_link"><a href="/mjweller/collection_new">items</a> <%if session[:cat_name]%>
-						/<a href="#"><%= session[:cat_name]%></a> <a href="/mjweller/collection_new" class="close">&times;</a> <%end%> </span>
+					<div class="row margin">
+						<a href="/mjweller/collection_new"><b><span style="font-size: 20px ;color: #455056"> Items</span></b></a> <%if session[:cat_name]%>
+						<span style="font-size: 20px">&raquo;&nbsp;</span><a href="#" style="font-size: 20px;color: #455056"><%= session[:cat_name].capitalize%></a> <a href="/mjweller/collection_new" class="close">&times;</a> <%end%>
+					</div>
+					
 				</div>
 				<div class="panel-body">
 
 					<div class="row " >
-
-						Category</br>
+                        <div class="form-group">
+                        	<div class="col-md-12">
+                        		<span style="font-weight: 700">Category</span>
+						<hr />
+                        	</div>
+                        </div>
+						
 						<form method="get"  id="filterByCat" action="/mjweller/collection_new" data-remote="true" >
 							<%cat_data.each do |cat|%>
 
@@ -74,7 +82,7 @@
 									<div class="checkbox" style="margin-bottom: 2px;margin-top: 2px">
 										<label>
 											<input type="checkbox" value="<%= cat.id%>"id="<%= cat.id%>"  class="cc" >
-											<%= "  "+  cat.name%> </label>
+											<%= "  "+  cat.name.capitalize%> </label>
 									</div>
 								</div>
 							</div>
@@ -109,13 +117,14 @@
 		</div>
 		<div class="col-md-10">
 			<div class="panel panel-default">
-				<div class="panel-heading">
-					<div class="panel-title" style="height: 30px">
+				<div class="panel-heading margin">
+					<div class="panel-title" >
 						<nav class="navbar  margin " role="navigation " style="z-index: 1;height: 30px" >
 
-							<ul class="nav navbar-nav">
+							<ul class="nav navbar-nav text-center" style="font-size: 20px ;color: #455056;line-height: 50px">
+								
 								<%if session[:cat_name]%>
-								<%= session[:cat_name]%> items
+								<%= session[:cat_name].capitalize%> items
 								<%else%>
 								Total Items
 								<%end%>
@@ -126,8 +135,8 @@
 									<span  id="pagi"><%= will_paginate @item  %></span>
 								</li>
 								<li class="dropdown">
-									<a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" class="dropdown-toggle animated" >Short By: <b class="caret"></b></a>
-									<ul class="dropdown-menu">
+									<a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" class="dropdown-toggle" ><b>Sort By</b> <b class="caret"></b></a>
+									<ul class="dropdown-menu "  style="min-width: 100px;">
 										<li>
 											<%= sortable "weight"%>
 										</li>

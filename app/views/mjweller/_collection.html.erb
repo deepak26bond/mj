@@ -9,7 +9,7 @@
 					<%end%>
 	<% @item.each do |item|%>
 	<div class="col-md-4">
-		<div  class="iteam-grid text-center">
+		<div  class="iteam-grid text-center" style="height: 320px">
 			<a href="/mjweller/detail?id=<%=item.id%>"><img src="<%= item.image_url(:thumb)%>"  class="animated" title="name"  style="width: 200px;height: 200px" /></a>
 			<span><%=item.category_detail.category%> <%=item.price_detail.name%> </span>
 
@@ -19,7 +19,7 @@
 					<a class="cart" href="#"><i>wt:<%=item.weight%> in gm</i></a>
 				</li>
 				<li>
-					<a class="more" href="#" style="width:140px; ">More</a>
+					<a class="more" href="#" style="width:145px; ">More</a>
 				</li>
 				
 			</ul>

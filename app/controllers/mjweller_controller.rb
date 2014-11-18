@@ -177,7 +177,7 @@ def collection_new
 if params['type'].nil?
   session[:category_id]=nil
 session[:cat_name]=nil
-@item=ItemDetail.order(sort_column + " " + sort_direction).joins(:price_detail).paginate(:page => params[:page], :per_page =>9)
+@item=ItemDetail.order(sort_column + " " + sort_direction).joins(:price_detail).paginate(:page => params[:page], :per_page =>6)
 respond_to do |format|
      format.html{} 
     # format.json { render json: @item }
