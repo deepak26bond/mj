@@ -18,9 +18,7 @@
 								source_image_width: 900,
 								source_image_height: 1000,
 								show_hint: true,
-								click_callback: function(image_anchor, instance_id){
-									alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
-								}
+								
 							});
 							// This is for the dropdown list example:
 							$('.dropdownlist').change(function(){
@@ -53,7 +51,7 @@
 					</div>
 				</div>
 					<div class="product-single-details-right">
-						<h2><%=@item.category_detail.category%></h2>
+						<h2><%=@item.name%></h2>
 						<p>Description:<span> <%=@item.category_detail.description%> </span></p>
 						<ul class="r-list">
 							<li class="rating"><span> </span>340 Ratings</li>
@@ -76,11 +74,11 @@
 							<div class="des-tabs">
 								<div class="tab1 tab">
 									<h4>Style Note</h4>
-									<p><%=@item.description%></p>
+									<p><%=@item.style_note%></p>
 								</div>
 								<div class="tab2 tab">
 									<h4>Product Details</h4>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. I</p>
+									<p><%=@item.product_deatil%></p>
 								</div>
 								<div class="tab3 tab">
 									<h4>Material & Care</h4>

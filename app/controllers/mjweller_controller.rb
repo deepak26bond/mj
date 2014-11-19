@@ -12,15 +12,14 @@ class MjwellerController < ApplicationController
  def item_detail
    if session[:admin]
    @item=ItemDetail.new
+ @price=PriceDetail.all
+@subcategory=CategoryDetail.all
  else 
    redirect_to "/users/admin_login"
  end
 
 end
-def item_detail
-  @price=PriceDetail.all
-@subcategory=CategoryDetail.all
-end
+
 def add_detail
  if session[:admin]
   @item = ItemDetail.new(item_params)
@@ -132,12 +131,18 @@ if session[:admin]
   id=params["id"]
   @delete=ItemDetail.find(id).destroy
   redirect_to "/mjweller/total_collection" ,sussces:"item deleted sussesfully"
+else
+  redirect_to "/users/admin_login"
 end
 end
 def add_subcategory
-  
+ if session[:admin] 
+ else
+  redirect_to "/users/admin_login"
+ end
 end
 def add_subcat_db
+if session[:admin]
   name=params[:subdata][:category]
   des=params[:subdata][:description]
   @sub=CategoryDetail.new :category=>name ,:description=>des
@@ -146,6 +151,9 @@ def add_subcat_db
 else
 redirect_to "/mjweller/add_subcategory",error: @sub.errors.to_a
   end
+else
+  redirect_to "/users/admin_login"
+end
 end
   
 def search_weight
@@ -225,7 +233,7 @@ UserMailer.user_mailer(mail_params).deliver
   redirect_to "/mjweller/contact",sussces: 'your message are susscesfully send'
   end   
 def item_params
-  params.require(:itemdata).permit(:name,:description,:weight,:quantity,:price_detail_id,:category_detail_id,:image)
+  params.require(:itemdata).permit(:name,:description,:weight,:quantity,:price_detail_id,:category_detail_id,:image,:product_deatil,:style_note)
 end
 private
   
