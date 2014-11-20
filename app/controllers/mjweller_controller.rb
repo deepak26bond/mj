@@ -204,7 +204,7 @@ format.html{}
 end
 elsif  params['type']=='price_detail_id' && session[:category_id]
   id=params['id'].split(',')
-  @item=ItemDetail.where('category_detail_id == (?) AND price_detail_id IN (?) '  , session[:category_id],id).joins(:price_detail).paginate(:page => params[:page], :per_page =>9)
+  @item=ItemDetail.where('category_detail_id ==?AND price_detail_id IN (?) '  , session[:category_id],id).joins(:price_detail).paginate(:page => params[:page], :per_page =>9)
 respond_to do |format|
 format.html{} 
    # format.json { render json: @item }
