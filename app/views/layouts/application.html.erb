@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Modern Jwellers|<%= yield(:title) %></title>
+		
+		<title>Modern Jewellers|<%= yield(:title) %></title>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
+		<link rel="icon" href="/icon.ico">
 		<script type="application/x-javascript">
 			addEventListener("load", function() {
 				setTimeout(hideURLbar, 0);
@@ -85,7 +87,7 @@ text-shadow: 2px 2px 10px #cc00ff;
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand  margin " href="/mjweller/home"  style="padding: 10px"><img src="/logo05.png" /></a>
+							<a class="navbar-brand  margin animated ab " href="/mjweller/home"  style="padding: 10px"><img src="/logo07.png" /></a>
 						</div>
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -114,7 +116,7 @@ text-shadow: 2px 2px 10px #cc00ff;
 								<li class="animated ab">
 									<a href="/mjweller/contact">Contact</a>
 								</li >
-								</li class="animated ab">
+								</li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
                             <%if session[:admin]%>

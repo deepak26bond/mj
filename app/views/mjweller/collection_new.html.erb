@@ -16,7 +16,7 @@
 				$('#filterByCat').attr('action', '/mjweller/collection_new?id=' + url + '&type=price_detail_id');
 
 				$('#filterByCat').trigger('submit.rails');
-				$("#collection").html("<span class='fa fa-spinner spin'>loading..</span>")
+				$("#collection_loading").html("<span style='z-index:1000;position:absolute'><span class='fa fa-spinner fa-spin' ></span>loading..</span>")
 			} else {
 
 			}
@@ -61,7 +61,7 @@
 				<div class="panel-heading">
 					<div class="row margin">
 						<a href="/mjweller/collection_new"><b><span style="font-size: 20px ;color: #455056"> Items</span></b></a> <%if session[:cat_name]%>
-						<span style="font-size: 20px">&raquo;&nbsp;</span><a href="#" style="font-size: 20px;color: #455056"><%= session[:cat_name].capitalize%></a> <a href="/mjweller/collection_new" class="close">&times;</a> <%end%>
+						<span style=" font-size: 20px">&raquo;&nbsp;</span><a href="#" style="font-size: 20px;color: #455056"><%= session[:cat_name].capitalize%></a> <a href="/mjweller/collection_new" class="close">&times;</a> <%end%>
 					</div>
 					
 				</div>
@@ -100,7 +100,7 @@
 
 								<div class=" col-sm-10">
 
-									<input id="ex2" type="text" class="form-control" name="[weight]"  value="1,80" data-slider-min="1" data-slider-max="1000" data-slider-step=".5" data-slider-value="[1,80]" />
+									<input id="ex2" type="text" class="form-control" name="[weight]"  value="1,200" data-slider-min="1" data-slider-max="1000" data-slider-step="1" data-slider-value="[1,200]" />
 
 								</div>
 							</div>
@@ -159,7 +159,7 @@
 					</div>
 				</div>
 				<div class="panel-body"  id="collection">
-
+                  <div id="collection_loading"></div>
 					<%= render 'collection'%>
 					<script>
 						$(function() {
